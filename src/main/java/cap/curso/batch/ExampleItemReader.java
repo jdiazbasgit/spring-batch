@@ -1,5 +1,7 @@
 package cap.curso.batch;
 
+import java.io.BufferedReader;
+
 import org.springframework.batch.item.ItemReader;
 import org.springframework.stereotype.Component;
 
@@ -10,20 +12,15 @@ import org.springframework.stereotype.Component;
 @Component("reader")
 public class ExampleItemReader implements ItemReader<String> {
 	
-	private String[] input = {"Hello world!", null};
 	
-	private int index = 0;
-	
+	private BufferedReader bufferedReader;
 	/**
 	 * Reads next record from input
 	 */
 	public String read() throws Exception {
-		if (index < input.length) {
-			return input[index++];
-		}
-		else {
-			return null;
-		}
+		
+		
+		return null;
 		
 	}
 

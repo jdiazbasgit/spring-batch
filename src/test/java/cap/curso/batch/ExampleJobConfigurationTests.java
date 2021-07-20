@@ -8,6 +8,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -19,7 +20,11 @@ public class ExampleJobConfigurationTests {
 	private JobLauncher jobLauncher;
 
 	@Autowired
-	private Job job;
+	@Qualifier("job1")
+	private Job job1;
+	@Autowired
+	@Qualifier("job2")
+	private Job job2;
 	
 	@Test
 	public void testSimpleProperties() throws Exception {
@@ -28,7 +33,8 @@ public class ExampleJobConfigurationTests {
 	
 	@Test
 	public void testLaunchJob() throws Exception {
-		jobLauncher.run(job, new JobParameters());
+		jobLauncher.run(job1, new JobParameters( ));
+		jobLauncher.run(job2, new JobParameters( ));
 	}
 	
 }
