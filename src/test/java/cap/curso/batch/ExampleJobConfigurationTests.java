@@ -2,9 +2,14 @@ package cap.curso.batch;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParameter;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +25,8 @@ public class ExampleJobConfigurationTests {
 	private JobLauncher jobLauncher;
 
 	@Autowired
-	@Qualifier("job1")
 	private Job job1;
-	@Autowired
-	@Qualifier("job2")
-	private Job job2;
+	
 	
 	@Test
 	public void testSimpleProperties() throws Exception {
@@ -33,8 +35,12 @@ public class ExampleJobConfigurationTests {
 	
 	@Test
 	public void testLaunchJob() throws Exception {
-		jobLauncher.run(job1, new JobParameters( ));
-		jobLauncher.run(job2, new JobParameters( ));
+		
+		JobParameter parameter= new JobParameter(new Date());
+		Map<String,JobParameter> mapaParametros= new HashMap();
+		mapaParametros.put("parametro1",parameter);
+		JobParameters parameters= new JobParameters(mapaParametros);
+		jobLauncher.run(job1, parameters);
 	}
 	
 }
