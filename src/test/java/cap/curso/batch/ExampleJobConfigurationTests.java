@@ -36,7 +36,7 @@ public class ExampleJobConfigurationTests {
 	@Test
 	public void testLaunchJob() throws Exception {
 		
-		JobParameter parameter= new JobParameter(new Date());
+		JobParameter parameter= new JobParameter(1l);
 		Map<String,JobParameter> mapaParametros= new HashMap();
 		mapaParametros.put("parametro1",parameter);
 		JobParameters parameters= new JobParameters(mapaParametros);
