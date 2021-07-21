@@ -24,7 +24,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @ComponentScan("cap.curso.batch")
-
+@EnableBatchProcessing
 public class ExampleConfiguration {
 
 //	@Value("${spring.datasource.jdbc.driver-class-name}")
