@@ -34,6 +34,7 @@ public class EjemploMvcBootApplication implements CommandLineRunner{
 	private String parametro;
 
 	public static void main(String[] args) throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
+		
 		SpringApplication.run(EjemploMvcBootApplication.class, args);
 		
 	}
@@ -43,7 +44,7 @@ public class EjemploMvcBootApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception
 	{
-		JobParameter parameter= new JobParameter(args[0]);
+		JobParameter parameter= new JobParameter(getParametro());
 		Map<String,JobParameter> mapaParametros= new HashMap();
 		mapaParametros.put("parametro1",parameter);
 		JobParameters parameters= new JobParameters(mapaParametros);

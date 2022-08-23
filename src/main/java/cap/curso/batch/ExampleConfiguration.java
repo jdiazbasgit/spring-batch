@@ -23,8 +23,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import lombok.Data;
+
 @Configuration
 @EnableBatchProcessing
+@Data
 public class ExampleConfiguration {
 
 
@@ -52,7 +55,7 @@ public class ExampleConfiguration {
 	
 	@Bean
 	public Job job1() {
-		return this.jobBuilderFactory.get("job1")
+		return getJobBuilderFactory().get("job1")
 				.start(step1())
 				.build(); 
 	}
