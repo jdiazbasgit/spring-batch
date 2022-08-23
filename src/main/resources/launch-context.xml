@@ -14,9 +14,9 @@
 
 	<context:component-scan base-package="cap.curso.batch" />
 
-	<!-- <jdbc:initialize-database data-source="dataSource">
+	 <jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="${batch.schema.script}" />
-	</jdbc:initialize-database> -->
+	</jdbc:initialize-database>
 
 	<batch:job-repository id="jobRepository" />
 
